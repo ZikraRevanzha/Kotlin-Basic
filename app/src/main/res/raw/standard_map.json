@@ -1,0 +1,18 @@
+[
+  {
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#ebe3cd"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text",
+    "stylers": [
+      {
+        "color": "#ebe3cd"
+      }
+    ]
+  }
+]

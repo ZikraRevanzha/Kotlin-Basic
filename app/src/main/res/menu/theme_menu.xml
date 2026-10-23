@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/themeStandart"
+        android:title="Standart"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/themeSilver"
+        android:title="Silver"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/themeRetro"
+        android:title="Retro"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/themeDark"
+        android:title="Dark"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/themeNight"
+        android:title="Night"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/themeAubergine"
+        android:title="Aubergine"
+        app:showAsAction="never" />
+</menu>
