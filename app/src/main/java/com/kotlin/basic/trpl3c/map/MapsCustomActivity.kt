@@ -1,11 +1,15 @@
 package com.kotlin.basic.trpl3c.map
 
+import android.Manifest
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.enableEdgeToEdge
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
@@ -52,64 +56,93 @@ class MapsCustomActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId) {
+        return when (item.itemId) {
             R.id.themeStandart -> {
                 mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
                 setThemeMap(R.raw.standard_map)
                 true
             }
+
             R.id.themeSilver -> {
                 mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
                 setThemeMap(R.raw.silver_map)
                 true
             }
+
             R.id.themeRetro -> {
                 mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
                 setThemeMap(R.raw.retro_map)
                 true
             }
+
             R.id.themeDark -> {
                 mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
                 setThemeMap(R.raw.dark_map)
                 true
             }
+
             R.id.themeNight -> {
                 mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
                 setThemeMap(R.raw.night_map)
                 true
             }
+
             R.id.themeAubergine -> {
                 mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
                 setThemeMap(R.raw.aubergine_map)
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }
 
-    fun setThemeMap(fileJsonTheme: Int){
-        mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(
-            this,
-            fileJsonTheme))
+    fun setThemeMap(fileJsonTheme: Int) {
+        mMap.setMapStyle(
+            MapStyleOptions.loadRawResourceStyle(
+                this,
+                fileJsonTheme
+            )
+        )
     }
 
-    fun tipeMapNormal(){
-        binding.fabNormal.setOnClickListener{
-            mMap.mapType = GoogleMap.MAP_TYPE_NORMAL }
+    fun tipeMapNormal() {
+        binding.fabNormal.setOnClickListener {
+            mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
+        }
     }
 
-    fun tipeMapSatellite(){
-        binding.fabSatellite.setOnClickListener{
-            mMap.mapType = GoogleMap.MAP_TYPE_SATELLITE }
+    fun tipeMapSatellite() {
+        binding.fabSatellite.setOnClickListener {
+            mMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
+        }
     }
 
-    fun tipeMapTerrain(){
-        binding.fabTerrain.setOnClickListener{
-            mMap.mapType = GoogleMap.MAP_TYPE_TERRAIN }
+    fun tipeMapTerrain() {
+        binding.fabTerrain.setOnClickListener {
+            mMap.mapType = GoogleMap.MAP_TYPE_TERRAIN
+        }
+    }
+
+    fun myLocation() {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            mMap.isMyLocationEnabled = true
+        } else {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                1
+            )
+        }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        myLocation()
 
         val listHotel = listOf(
             HotelModel(

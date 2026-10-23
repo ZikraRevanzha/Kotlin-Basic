@@ -57,6 +57,11 @@ Project ini mencakup berbagai komponen inti dalam ekosistem Android:
 - **Custom Map Styling** (`MapsCustomActivity`): Pengaturan tema visual peta (Aubergine, Dark, Night, Retro, Silver, Standard) menggunakan konfigurasi JSON.
 - **Multi Marker Interaktif** (`MapsMultiMarkerActivity`): Penanda lokasi jamak (Cafe, Kos, Lab, Masjid, Rumah, Sekolah, Hotel) dengan custom marker icon.
 
+### 8. REST API & Networking (`api`)
+- **Category Meal** (`MealCategoryActivity` & `CategoryMealAdapter`): Konsumsi API TheMealDB untuk menampilkan daftar kategori makanan.
+- **Product List** (`ProductActivity` & `ProductAdapter`): Konsumsi API DummyJSON (`/products`) untuk menampilkan daftar produk beserta gambar, judul, harga, dan rating bintang (`RatingBar`).
+- **Retrofit & OkHttp Config** (`ApiClient` & `ApiService`): Pengaturan client HTTP Retrofit, converter GSON, dan `HttpLoggingInterceptor` untuk logging request/response.
+
 ---
 
 ## 📂 Struktur Proyek
@@ -67,6 +72,7 @@ Kotlin Basic/
 │   ├── src/
 │   │   ├── main/
 │   │   │   ├── java/com/kotlin/basic/trpl3c/
+│   │   │   │   ├── api/             # Retrofit REST API, Model, Adapter (TheMealDB & DummyJSON)
 │   │   │   │   ├── intent/          # Activity terkait perpindahan intent & data
 │   │   │   │   ├── map/             # Google Maps & Custom Styling
 │   │   │   │   ├── menu/            # Popup & Options Menu
@@ -96,6 +102,8 @@ Kotlin Basic/
 - **Target SDK**: Android 35 / 37
 - **Min SDK**: Android 24 (Nougat)
 - **View Binding**: Diaktifkan untuk akses aman terhadap view layout
+- **Retrofit & Gson**: Konverter JSON dan HTTP Client untuk REST API
+- **Picasso**: Image loading library untuk pengunduhan & caching gambar
 - **Google Play Services Maps**: `play-services-maps` untuk integrasi peta digital
 - **AndroidX & Material Design**: Komponen antarmuka modern Material 3
 
